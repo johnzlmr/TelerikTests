@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="RadAutocompleteTest.WorkAroundOne"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:RadAutocompleteTest"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui"
+             Title="WorkAroundOne"
+             x:DataType="model:WorkAroundOne">
+
+    <VerticalStackLayout Margin="8" Padding="8">
+
+        <Label HorizontalOptions="Center"
+               Text="Welcome to .NET MAUI!"
+               VerticalOptions="Center" />
+
+        <Label HeightRequest="70" Text="Samsung Galaxy S10 workaround" />
+
+        <telerik:RadAutoComplete x:Name="RadAutoComplete"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="2"
+                                 CompletionMode="Contains"
+                                 IsClearButtonVisible="True"
+                                 ItemsSource="{Binding TestItems}"
+                                 NoResultsMessage="no results"
+                                 Placeholder="tape here..."
+                                 TextSearchPath="Libelle">
+
+            <telerik:RadAutoComplete.SuggestionViewTemplate>
+                <DataTemplate>
+                    <CollectionView ItemsSource="{Binding FilteredItems, Source={x:Reference RadAutoComplete}}"
+                                    SelectionChanged="CollectionView_SelectionChanged"
+                                    SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:TestItem">
+                                <ContentView>
+                                    <Label Text="{Binding Libelle}" />
+                                </ContentView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </DataTemplate>
+            </telerik:RadAutoComplete.SuggestionViewTemplate>
+        </telerik:RadAutoComplete>
+
+
+        <Button Margin="0,100,0,0"
+                Clicked="Button_Clicked"
+                Text="go back" />
+
+        <Entry Placeholder="change focus only..." />
+
+    </VerticalStackLayout>
+</ContentPage>

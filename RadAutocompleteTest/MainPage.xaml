@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="RadAutocompleteTest.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2022/xaml/maui">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0"
+                             Spacing="25"
+                             VerticalOptions="Center">
+
+            <Image HeightRequest="185"
+                   HorizontalOptions="Center"
+                   SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                   Source="dotnet_bot.png" />
+
+            <Label FontSize="32"
+                   HorizontalOptions="Center"
+                   SemanticProperties.HeadingLevel="Level1"
+                   Style="{StaticResource Headline}"
+                   Text="Hello, World!" />
+
+            <Label FontSize="18"
+                   HorizontalOptions="Center"
+                   SemanticProperties.Description="Welcome to Telerik UI for dot net Multi platform App U I"
+                   SemanticProperties.HeadingLevel="Level2"
+                   Style="{StaticResource SubHeadline}"
+                   Text="Welcome to Telerik UI for .NET MAUI" />
+
+            <telerik:RadToggleButton x:Name="ToggleBtn"
+                                     Clicked="OnToggleButtonClicked"
+                                     Content="Toggled 1 time"
+                                     HorizontalOptions="{OnPlatform Default=Center,
+                                                                    Android=Fill,
+                                                                    iOS=Fill}"
+                                     IsThreeState="False"
+                                     IsToggled="True"
+                                     WidthRequest="{OnPlatform MacCatalyst=300,
+                                                               WinUI=300}" />
+
+            <Button Clicked="Button_Clicked" Text="go sample" />
+            <Button Clicked="Button2_Clicked" Text="go workaround" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
